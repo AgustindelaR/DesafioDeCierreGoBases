@@ -8,13 +8,14 @@ import (
 type CountByMornings struct {
 }
 
-func (task CountByMornings) OperateLine(line []string, bag *Bag) {
+func (task CountByMornings) OperateLine(line []string, bag *Bag) error {
 	morningsAmounts, ok := (bag.Object).(*int)
 	if ok {
 		CountMornings(line, morningsAmounts)
 	} else {
-		return // error
+		return MyError{"Error convirtiendo objeto bag a *int"} // error
 	}
+	return nil
 }
 
 func CountMornings(line []string, mournings *int) {
@@ -31,13 +32,14 @@ func CountMornings(line []string, mournings *int) {
 type CountByMadrugada struct {
 }
 
-func (task CountByMadrugada) OperateLine(line []string, bag *Bag) {
+func (task CountByMadrugada) OperateLine(line []string, bag *Bag) error {
 	morningsAmounts, ok := (bag.Object).(*int)
 	if ok {
 		CountMadrugada(line, morningsAmounts)
 	} else {
-		return // error
+		return MyError{"Error convirtiendo objeto bag a *int"} // error
 	}
+	return nil
 }
 
 func CountMadrugada(line []string, mournings *int) {
@@ -55,13 +57,14 @@ func CountMadrugada(line []string, mournings *int) {
 type CountByTarde struct {
 }
 
-func (task CountByTarde) OperateLine(line []string, bag *Bag) {
+func (task CountByTarde) OperateLine(line []string, bag *Bag) error {
 	morningsAmounts, ok := (bag.Object).(*int)
 	if ok {
 		CountTarde(line, morningsAmounts)
 	} else {
-		return // error
+		return MyError{"Error convirtiendo objeto bag a *int"} // error
 	}
+	return nil
 }
 
 func CountTarde(line []string, mournings *int) {
@@ -78,13 +81,14 @@ func CountTarde(line []string, mournings *int) {
 type CountByNoche struct {
 }
 
-func (task CountByNoche) OperateLine(line []string, bag *Bag) {
+func (task CountByNoche) OperateLine(line []string, bag *Bag) error {
 	morningsAmounts, ok := (bag.Object).(*int)
 	if ok {
 		CountNoche(line, morningsAmounts)
 	} else {
-		return // error
+		return MyError{"Error convirtiendo objeto bag a *int"} // error
 	}
+	return nil
 }
 
 func CountNoche(line []string, mournings *int) {

@@ -3,13 +3,21 @@ package tickets
 import "fmt"
 
 type Job interface {
-	OperateLine([]string, *Bag)
+	OperateLine([]string, *Bag) error
 }
 
 type object interface{}
 
 type Bag struct {
 	Object interface{}
+}
+
+type MyError struct {
+	msg string
+}
+
+func (err MyError) Error() string {
+	return err.msg
 }
 
 // ejemplo 1

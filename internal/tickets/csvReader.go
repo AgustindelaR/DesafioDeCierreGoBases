@@ -27,7 +27,7 @@ func CsvReader(path string, task Job, bag *Bag) error {
 				...
 			}*/
 
-		task.OperateLine(record, bag)
+		err = task.OperateLine(record, bag)
 	}
-	return nil
+	return err
 }

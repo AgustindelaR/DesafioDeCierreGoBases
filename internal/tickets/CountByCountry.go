@@ -3,13 +3,14 @@ package tickets
 type CountByCountry struct {
 }
 
-func (task CountByCountry) OperateLine(line []string, bag *Bag) {
-	ticketMap, ok := (bag.Object).(map[string]int) // REVISAR LÓGICA DE PUNTEROS
+func (task CountByCountry) OperateLine(line []string, bag *Bag) error {
+	ticketMap, ok := (bag.Object).(map[string]int)
 	if ok {
 		StoreLineInMap(line, &ticketMap)
 	} else {
-		return // error
+		return MyError{"Error en el tipado de map dentro de bag"}
 	}
+	return nil // no error
 }
 
 func StoreLineInMap(line []string, ticketsMap *map[string]int) {

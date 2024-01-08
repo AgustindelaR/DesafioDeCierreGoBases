@@ -3,13 +3,14 @@ package tickets
 type CountByAverage struct {
 }
 
-func (task CountByAverage) OperateLine(line []string, bag *Bag) {
-	ticketMap, ok := (bag.Object).(map[string]int) // REVISAR LÓGICA DE PUNTEROS
+func (task CountByAverage) OperateLine(line []string, bag *Bag) error {
+	ticketMap, ok := (bag.Object).(map[string]int)
 	if ok {
 		countAvergaAndTtotal(line, &ticketMap)
 	} else {
-		return // error
+		return MyError{"Error convirtiendo objeto bag a *int"} // error
 	}
+	return nil
 }
 
 func countAvergaAndTtotal(line []string, ticketsMap *map[string]int) {

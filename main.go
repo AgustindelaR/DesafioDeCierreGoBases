@@ -7,12 +7,13 @@ import (
 )
 
 func main() {
-	total, err := tickets.GetTotalTickets("Brazil")
+	destino := "Brazil"
+	total, err := tickets.GetTotalTickets(destino)
 	if err != nil {
 		println(err.Error())
 		return
 	}
-	fmt.Printf("El pais brazil tiene %d viajes\n", total)
+	fmt.Printf("El pais %s tiene %d viajes\n", destino, total)
 
 	totalMornings, errDos := tickets.GetMornings("Morning")
 	if errDos != nil {
@@ -21,7 +22,6 @@ func main() {
 	}
 	fmt.Printf("Hubo %d viajes en la mañana\n", totalMornings)
 
-	destino := "Brazil"
 	averageDestination, errTres := tickets.AverageDestination(destino)
 	if errTres != nil {
 		println(err.Error())
